@@ -10,6 +10,8 @@ import { FormsModule }   from '@angular/forms';
 import { PlantsListComponent } from './plants-list/plants-list.component';
 import { AddPlantComponent } from './add-plant/add-plant.component';
 import { AddItemComponent } from './add-item/add-item.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { AddItemComponent } from './add-item/add-item.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
