@@ -8,9 +8,8 @@ export class PlantsService {
   private plants = [
     {
         "name":"plant1",
-        "dates":[
-            {
-                "date":"1/1/2019",
+        "dates":{
+            "2019-01-01": {
                 "actions": [
                     {
                         "type":"water",
@@ -22,8 +21,8 @@ export class PlantsService {
                     }
                 ]
             },
-            {
-                "date":"15/1/2019",
+            
+            "2019-01-15": {
                 "actions": [
                     {
                         "type":"water",
@@ -35,25 +34,24 @@ export class PlantsService {
                     }
                 ]
             }
-        ]
+        }
     },
     {
         "name": "plant2",
-        "dates":[
-            {
-                "date":"15/1/2019",
+        "dates":{
+            "2019-01-15":{
                 "actions": [
                     {
-                        "type":"water",
-                        "text":"asdf"
+                    "type":"water",
+                    "text":"asdf"
                     },
                 ]
             },
-            {
-                "date":"30/1/2019",
+            "2019-01-30":{
                 "actions": []
             }
-        ]
+        }
+        
     },
     {
         "name": "plant3",
@@ -81,5 +79,23 @@ export class PlantsService {
             "dates":[]
         }
     )
+  }
+  addItem(id, date, item) {
+      console.log(id);
+      console.log(date);
+      console.log(item);
+      const items = this.plants$.getValue()
+      const itemdate = items[id].dates[date];
+      if(itemdate) {
+        itemdate.actions.push(item);
+        this.plants$.next(items);
+        console.log(date)
+      } else {
+        const actions =  []
+        actions.push(item)
+        const plants = this.plants$.getValue()
+        plants[id].dates[date] = {actions: actions}
+        this.plants$.next(items);
+      }
   }
 }

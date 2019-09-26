@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PlantsComponent } from './plants/plants.component';
 import { PlantsListComponent } from './plants-list/plants-list.component';
 import { AddPlantComponent } from './add-plant/add-plant.component';
+import { AddItemComponent } from './add-item/add-item.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'addplant',
     component: AddPlantComponent
+  },
+  {
+    path: 'plant/:id/additem',
+    component: AddItemComponent
   }
 ];
 

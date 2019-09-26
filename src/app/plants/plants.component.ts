@@ -11,6 +11,8 @@ export class PlantsComponent implements OnInit {
 
   plant;
 
+  plantid;
+
   constructor(private plantsService: PlantsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -18,7 +20,7 @@ export class PlantsComponent implements OnInit {
     const id = this.route.snapshot.params["id"];
     console.log("HERE"+ id)
     // this.plants=this.plantsService.getplants();
-    console.log(this.plantsService.getPlant(id));
+    this.plantid = id;
     this.plant = this.plantsService.getPlant(id);
   }
 

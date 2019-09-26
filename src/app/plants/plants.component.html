@@ -1,6 +1,8 @@
 <p>plants works!</p>
 
-<div *ngFor="let dates of plant.dates">
-    <app-dates [dates]="dates"></app-dates>
+<div *ngFor="let dates of plant.dates | keyvalue">
+    {{dates.key}}
+    <app-dates [dates]="dates.value"></app-dates>
 
 </div>
+<a [routerLink]="['/plant/',plantid, 'additem']">add item</a>
