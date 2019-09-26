@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlantsService } from '../plants/plants.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-plant',
@@ -8,12 +9,14 @@ import { PlantsService } from '../plants/plants.service';
 })
 export class AddPlantComponent implements OnInit {
   plantName;
-  constructor(private plantService: PlantsService) { }
+  constructor(private plantService: PlantsService, private router: Router) { }
 
   ngOnInit() {
   }
   addPlant() {
     this.plantService.addPlant(this.plantName);
+    this.router.navigateByUrl('/list');
+
   }
 
 }

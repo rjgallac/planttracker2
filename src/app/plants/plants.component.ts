@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlantsService } from './plants.service';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
   selector: 'app-plants',
@@ -11,17 +11,19 @@ export class PlantsComponent implements OnInit {
 
   plant;
 
-  plantid;
+  plantId;
 
-  constructor(private plantsService: PlantsService, private route: ActivatedRoute) { }
+  constructor(private plantsService: PlantsService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     
-    const id = this.route.snapshot.params["id"];
-    console.log("HERE"+ id)
-    // this.plants=this.plantsService.getplants();
-    this.plantid = id;
-    this.plant = this.plantsService.getPlant(id);
+    this.plantId = this.route.snapshot.params["id"];
+    this.plant = this.plantsService.getPlant(this.plantId);
+  }
+
+  public deletePlant() {
+    this.plantsService.deletePlant(this.plantId);
+    this.router.navigateByUrl('/list');
   }
 
 }

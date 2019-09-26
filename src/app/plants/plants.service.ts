@@ -80,6 +80,11 @@ export class PlantsService {
         }
     )
   }
+  deletePlant(plantId) {
+    const plants = this.plants$.getValue();
+    plants.splice(plantId, 1);
+    console.log(plantId)    
+  }
   addItem(id, date, item) {
       console.log(id);
       console.log(date);

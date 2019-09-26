@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlantsService } from '../plants/plants.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-item',
@@ -11,7 +11,7 @@ export class AddItemComponent implements OnInit {
   id;
   date;
   text;
-  constructor(private plantService: PlantsService, private route: ActivatedRoute) { }
+  constructor(private plantService: PlantsService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.params["id"];
@@ -23,6 +23,7 @@ export class AddItemComponent implements OnInit {
       "text":this.text
     }
     this.plantService.addItem(this.id, this.date, item)
+    this.router.navigateByUrl('/plant/' + this.id);
   }
 
 }
