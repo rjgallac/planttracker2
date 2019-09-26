@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -63,12 +64,19 @@ export class PlantsService {
         "dates":[]
     }
 ]
+    private plants$: BehaviorSubject<any[]> = new BehaviorSubject(this.plants);
+
   constructor() { }
-  getplants(){
-    return this.plants;
+
+    public getPlant(index){
+        return this.plants$.getValue()[index];
+    }
+
+  getPlants(){
+    return this.plants$.asObservable();
   }
   addPlant(plantName){
-      this.plants.push( {
+      this.plants$.getValue().push( {
             "name":plantName,
             "dates":[]
         }

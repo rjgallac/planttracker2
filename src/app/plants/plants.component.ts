@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlantsService } from './plants.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-plants',
@@ -8,25 +9,17 @@ import { PlantsService } from './plants.service';
 })
 export class PlantsComponent implements OnInit {
 
-  plants;
-  plantno = 0;
-  plantName = "";
+  plant;
 
-  constructor(private plantsService: PlantsService) { }
+  constructor(private plantsService: PlantsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log("HERE")
-    this.plants=this.plantsService.getplants();
-    console.log(this.plants)
-  }
-  previous(){
-    this.plantno--;
-  }
-  next(){
-    this.plantno++;
-  }
-  addPlant(){
-    this.plantsService.addPlant(this.plantName);
+    
+    const id = this.route.snapshot.params["id"];
+    console.log("HERE"+ id)
+    // this.plants=this.plantsService.getplants();
+    console.log(this.plantsService.getPlant(id));
+    this.plant = this.plantsService.getPlant(id);
   }
 
 }

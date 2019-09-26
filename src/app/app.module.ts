@@ -7,13 +7,17 @@ import { PlantsComponent } from './plants/plants.component';
 import { DatesComponent } from './plants/dates/dates.component';
 import { ActionsComponent } from './plants/dates/actions/actions.component';
 import { FormsModule }   from '@angular/forms';
+import { PlantsListComponent } from './plants-list/plants-list.component';
+import { AddPlantComponent } from './add-plant/add-plant.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlantsComponent,
     DatesComponent,
-    ActionsComponent
+    ActionsComponent,
+    PlantsListComponent,
+    AddPlantComponent
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,6 @@
 <p>plants works!</p>
-<button (click)="previous()">previous</button>
-{{plants[plantno].name}}
-<button (click)="next()">next</button>
-<div *ngFor="let dates of plants[plantno].dates">
+
+<div *ngFor="let dates of plant.dates">
     <app-dates [dates]="dates"></app-dates>
 
 </div>
-plant name<input [(ngModel)]="plantName"/>
-<button (click)="addPlant()">Add</button>
