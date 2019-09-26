@@ -17,10 +17,15 @@ public class PlantController {
   public List<Plant> get(){
     List<Plant> plants = new ArrayList();
     Plant plant = new Plant("plant1");
+    Plant plant2 = new Plant("plant2");
     Action action = new Action();
     action.addItem(new Item("asdf", "asdf"));
     plant.addAction("2019-01-01", action);
+    plant2.addAction("2019-01-01", action);
+    plant2.addAction("2019-09-26", action);
     plants.add(plant);
+    plants.add(plant2);
+
     return plants;
   }
 }

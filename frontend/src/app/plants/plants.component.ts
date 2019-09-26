@@ -16,7 +16,7 @@ export class PlantsComponent implements OnInit {
   constructor(private plantsService: PlantsService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    
+
     this.plantId = this.route.snapshot.params["id"];
     this.plant = this.plantsService.getPlant(this.plantId);
   }
