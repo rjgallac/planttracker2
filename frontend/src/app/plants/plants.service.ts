@@ -8,20 +8,30 @@ import { HttpClient } from '@angular/common/http';
 export class PlantsService {
 
     private plants$: BehaviorSubject<any[]> = new BehaviorSubject([]);
-
+    private plant$: BehaviorSubject<any> = new BehaviorSubject({});
     constructor(private http: HttpClient) {
         this.getAllPlants();
     }
 
     public getPlant(index) {
-        return this.plants$.getValue()[index];
+        this.plants$.subscribe(data =>{
+            console.log(data)
+            const value = data[index]
+            if(value){
+                this.plant$.next(value);
+            }
+        })
     }
 
     getPlants() {
         return this.plants$.asObservable();
     }
+    getPlantObservable(){
+        return this.plant$.asObservable();
+    }
     getAllPlants() {
         this.http.get<any[]>("http://127.0.0.1:8080/plants").subscribe(data => {
+            console.log(data)
             this.plants$.next(data);
         })
     }

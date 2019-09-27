@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PlantsService } from './plants.service';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { filter, map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-plants',
@@ -18,7 +20,11 @@ export class PlantsComponent implements OnInit {
   ngOnInit() {
 
     this.plantId = this.route.snapshot.params["id"];
-    this.plant = this.plantsService.getPlant(this.plantId);
+    this.plantsService.getPlant(this.plantId);
+    this.plantsService.getPlantObservable().pipe(filter(x=> x!={})).subscribe(data =>{
+      console.log(data)
+      this.plant = data;
+    })
   }
 
   public deletePlant() {

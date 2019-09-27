@@ -4,11 +4,11 @@ import { PlantsComponent } from './plants/plants.component';
 import { PlantsListComponent } from './plants-list/plants-list.component';
 import { AddPlantComponent } from './add-plant/add-plant.component';
 import { AddItemComponent } from './add-item/add-item.component';
-
+import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   {
     path: '',
-    component: PlantsComponent
+    component: HomeComponent
   },
   {
     path: 'list',

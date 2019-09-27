@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Plant {
   private String name;
-  private Map<String, Action> dates = new HashMap<>();
+  private Map<String, Recordings> dates = new HashMap<>();
 
   public Plant(String name) {
     this.name = name;
@@ -15,12 +15,12 @@ public class Plant {
     return name;
   }
 
-  public Map<String, Action> getDates() {
+  public Map<String, Recordings> getDates() {
     return dates;
   }
 
-  public void addAction(String date, Action action) {
-    this.dates.put(date, action);
+  public void addRecordings(String date, Recordings recordings) {
+    this.dates.put(date, recordings);
   }
 
 }

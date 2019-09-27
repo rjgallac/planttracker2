@@ -11,6 +11,7 @@ import { PlantsListComponent } from './plants-list/plants-list.component';
 import { AddPlantComponent } from './add-plant/add-plant.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     ActionsComponent,
     PlantsListComponent,
     AddPlantComponent,
-    AddItemComponent
+    AddItemComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,9 @@
 <h2>{{plant.name}}</h2>
-<div *ngFor="let dates of plant.dates | keyvalue">
-    <h3>{{dates.key}}</h3>
-    <app-dates [dates]="dates.value"></app-dates>
-
-</div>
+<ul *ngFor="let dates of plant.dates | keyvalue">
+    <li>
+        <h3>{{dates.key}}</h3>
+        <app-dates [dates]="dates.value"></app-dates>
+    </li>
+</ul>
 <button (click)="deletePlant()">delete plant</button>
 <a [routerLink]="['/plant/',plantId, 'additem']">add item</a>
