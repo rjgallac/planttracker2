@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { PlantsService } from '../plants/plants.service';
+import { PlantsService } from '../../../plants.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-add-item',
-  templateUrl: './add-item.component.html',
-  styleUrls: ['./add-item.component.css']
+  selector: 'app-add-action',
+  templateUrl: './add-action.component.html',
+  styleUrls: ['./add-action.component.css']
 })
-export class AddItemComponent implements OnInit {
+export class AddActionComponent implements OnInit {
   id;
   date;
   text;
@@ -19,10 +19,9 @@ export class AddItemComponent implements OnInit {
 
   public addItem() {
     const item = {
-      "type":"water",
-      "text":this.text
+      "actionType":"WATER"
     }
-    this.plantService.addItem(this.id, this.date, item)
+    this.plantService.addAction(this.id, this.date, item)
     this.router.navigateByUrl('/plant/' + this.id);
   }
 

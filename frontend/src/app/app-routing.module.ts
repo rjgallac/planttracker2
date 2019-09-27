@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PlantsComponent } from './plants/plants.component';
+import { PlantsComponent } from './plants-list/plants/plants.component';
 import { PlantsListComponent } from './plants-list/plants-list.component';
 import { AddPlantComponent } from './add-plant/add-plant.component';
-import { AddItemComponent } from './add-item/add-item.component';
+import { AddActionComponent } from './plants-list/plants/dates/actions/add-action/add-action.component';
 import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   {
@@ -23,8 +23,8 @@ const routes: Routes = [
     component: AddPlantComponent
   },
   {
-    path: 'plant/:id/additem',
-    component: AddItemComponent
+    path: 'plant/:id/addaction',
+    component: AddActionComponent
   }
 ];
 

@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PlantsComponent } from './plants/plants.component';
-import { DatesComponent } from './plants/dates/dates.component';
-import { ActionsComponent } from './plants/dates/actions/actions.component';
+import { PlantsComponent } from './plants-list/plants/plants.component';
+import { DatesComponent } from './plants-list/plants/dates/dates.component';
+import { ActionsComponent } from './plants-list/plants/dates/actions/actions.component';
 import { FormsModule }   from '@angular/forms';
 import { PlantsListComponent } from './plants-list/plants-list.component';
 import { AddPlantComponent } from './add-plant/add-plant.component';
-import { AddItemComponent } from './add-item/add-item.component';
+import { AddActionComponent } from './plants-list/plants/dates/actions/add-action/add-action.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 
@@ -22,7 +22,7 @@ import { HomeComponent } from './home/home.component';
     ActionsComponent,
     PlantsListComponent,
     AddPlantComponent,
-    AddItemComponent,
+    AddActionComponent,
     HomeComponent
   ],
   imports: [

@@ -48,7 +48,7 @@ export class PlantsService {
         console.log(plantId)
         this.plants$.next(plants);
     }
-    addItem(id, date, item) {
+    addAction(id, date, item) {
         console.log(id);
         console.log(date);
         console.log(item);
