@@ -85,10 +85,13 @@ export class PlantsService {
             return v.toString(16);
         });
       }
-    deletePlant(plantId) {
+    deletePlant(plantIndex, plantId) {
+        var transaction = this.db.transaction('plants', 'readwrite');
+        var plantsStore = transaction.objectStore('plants');
+        var request = plantsStore.delete(plantId);
         const plants = this.plants$.getValue();
-        plants.splice(plantId, 1);
-        console.log(plantId)
+        plants.splice(plantIndex, 1);
+        console.log(plantIndex)
         this.plants$.next(plants);
     }
     addAction(id, date, item) {
@@ -108,5 +111,12 @@ export class PlantsService {
             plants[id].dates[date] = { actions: actions }
             this.plants$.next(items);
         }
+        this.updatePlantInDB(items[id]);
+    }
+    updatePlantInDB(plant){
+        console.log(plant)
+        var transaction = this.db.transaction('plants', 'readwrite');
+        var plantsStore: IDBObjectStore = transaction.objectStore('plants');
+        var request = plantsStore.put(plant);
     }
 }
