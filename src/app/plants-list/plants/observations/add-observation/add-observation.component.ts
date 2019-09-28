@@ -1,28 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { PlantsService } from '../../../plants.service';
+import { PlantsService } from '../../plants.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-add-action',
-  templateUrl: './add-action.component.html',
-  styleUrls: ['./add-action.component.css']
+  selector: 'app-add-observation',
+  templateUrl: './add-observation.component.html',
+  styleUrls: ['./add-observation.component.css']
 })
-export class AddActionComponent implements OnInit {
+export class AddObservationComponent implements OnInit {
   id;
   date;
   text;
+
   constructor(private plantService: PlantsService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.params["id"];
   }
 
-  public addItem() {
+  addItem() {
     const item = {
-      "actionType":"WATER"
+      "type": "OBSERVATION",
+      "text":this.text,
+      "date": this.date
     }
-    this.plantService.addAction(this.id, this.date, item)
+    this.plantService.addObservation(this.id, item)
     this.router.navigateByUrl('/plant/' + this.id);
   }
-
 }

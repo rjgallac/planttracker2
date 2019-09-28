@@ -68,7 +68,7 @@ export class PlantsService {
         const newPlant = {
             "id": this.uuidv4(),
             "name": plantName,
-            "dates": []
+            "actions": []
         }
         currentListOfPlants.push(newPlant)
         this.save(newPlant)
@@ -98,40 +98,29 @@ export class PlantsService {
         console.log(plantIndex)
         this.plants$.next(plants);
     }
-    addAction(id, date, item) {
-        console.log(id);
-        console.log(date);
-        console.log(item);
+    addAction(id, item) {
         const items = this.plants$.getValue()
-        const itemdate = items[id].dates[date];
-        if (itemdate) {
-            itemdate.actions.push(item);
-            this.plants$.next(items);
-            console.log(date)
-        } else {
-            const actions = []
-            actions.push(item)
-            const plants = this.plants$.getValue()
-            plants[id].dates[date] = { actions: actions }
-            this.plants$.next(items);
-        }
+        items[id].actions.push(item);
+        this.plants$.next(items);
         this.updatePlantInDB(items[id]);
     }
-    addPic(id, date, pic){
-        const plants = this.plants$.getValue()
-        const itemdate = plants[id].dates[date];
-        if (itemdate) {
-            itemdate.actions.push(pic);
-            this.plants$.next(plants);
-            console.log(date)
-        }else{
-            const pics = [];
-            pics.push(pic)
-            plants[id].dates[date] = { pics: pics }
-            console.log(pic);
-        }
-        this.updatePlantInDB(plants[id]);
-
+    addObservation(id, item) {
+        const items = this.plants$.getValue()
+        items[id].actions.push(item);
+        this.plants$.next(items);
+        this.updatePlantInDB(items[id]);
+    }
+    addMeasurement(id, item) {
+        const items = this.plants$.getValue()
+        items[id].actions.push(item);
+        this.plants$.next(items);
+        this.updatePlantInDB(items[id]);
+    }
+    addPic(id, item){
+        const items = this.plants$.getValue()
+        items[id].actions.push(item);
+        this.plants$.next(items);
+        this.updatePlantInDB(items[id]);
     }
     updatePlantInDB(plant){
         console.log(plant)

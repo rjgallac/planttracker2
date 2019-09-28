@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PlantsService } from '../../../plants.service';
+import { PlantsService } from '../../plants.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -24,7 +24,12 @@ export class AddPicComponent implements OnInit {
     const reader = new FileReader();
     reader.addEventListener('load', (event: any) => {
       console.log(reader.result);
-      this.plantService.addPic(this.id, new Date(), reader.result)
+      const item = {
+        "type": "PIC",
+        "pic": reader.result,
+        "date": new Date()
+      }
+      this.plantService.addPic(this.id, item)
     });
 
     reader.readAsDataURL(file);

@@ -14,5 +14,9 @@ export class MeasurementsComponent implements OnInit {
 
   ngOnInit() {
   }
+  
+  addItem() {
+
+  }
 
 }
