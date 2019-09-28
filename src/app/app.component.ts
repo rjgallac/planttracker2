@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'planttracker2';
+  constructor(){
+    document.body.requestFullscreen();
+  }
 }
