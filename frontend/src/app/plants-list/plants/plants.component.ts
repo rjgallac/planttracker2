@@ -27,6 +27,9 @@ export class PlantsComponent implements OnInit {
     })
   }
 
+  save(){
+    this.plantsService.save()
+  }
   public deletePlant() {
     this.plantsService.deletePlant(this.plantId);
     this.router.navigateByUrl('/list');
