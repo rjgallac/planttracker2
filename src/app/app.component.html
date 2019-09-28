@@ -1,11 +1,11 @@
 <div>
     <div id="header">
         <h1>Plant Tracker</h1>
-        <ul id="menu">
-            <li class="link" ><a [routerLink]="['/']">Home</a> </li>
-            <li class="link" ><a [routerLink]="['/list']">list</a> </li>
-            <li class="link" ><a [routerLink]="['/addplant']">add plant</a></li>
-        </ul>
+        <div id="menu">
+            <a class="link" [routerLink]="['/']">Home</a>
+            <a class="link" [routerLink]="['/list']">list</a>
+            <a class="link" [routerLink]="['/addplant']">add plant</a>
+        </div>
     </div>
     <router-outlet></router-outlet>
 </div>
