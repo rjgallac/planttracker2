@@ -11,7 +11,9 @@ export class PlantsListComponent implements OnInit {
   constructor(private plantService: PlantsService) { }
 
   ngOnInit() {
-    // this.plantService.getAllPlants();
+  }
+  getPlants(){
+    return this.plantService.getPlants();
   }
 
 }

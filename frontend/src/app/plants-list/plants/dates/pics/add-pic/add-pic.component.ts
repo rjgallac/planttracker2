@@ -11,5 +11,8 @@ export class AddPicComponent implements OnInit {
 
   ngOnInit() {
   }
+  onFileSelected(event){
+    console.log(event)
+  }
 
 }

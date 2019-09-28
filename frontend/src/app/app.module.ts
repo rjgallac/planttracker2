@@ -18,6 +18,8 @@ import { PicsComponent } from './plants-list/plants/dates/pics/pics.component';
 import { AddPicComponent } from './plants-list/plants/dates/pics/add-pic/add-pic.component';
 import { AddMeasurementComponent } from './plants-list/plants/dates/measurements/add-measurement/add-measurement.component';
 import { AddObservationComponent } from './plants-list/plants/dates/observations/add-observation/add-observation.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -42,6 +44,7 @@ import { AddObservationComponent } from './plants-list/plants/dates/observations
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent]
