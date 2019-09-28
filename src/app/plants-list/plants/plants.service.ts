@@ -8,16 +8,19 @@ import { HttpClient } from '@angular/common/http';
 export class PlantsService {
     private plants$: BehaviorSubject<any[]> = new BehaviorSubject([]);
     private plant$: BehaviorSubject<any> = new BehaviorSubject({});
-    private request = window.indexedDB.open("planttracker", 1);
+    private request;
     private db;
 
     constructor(private http: HttpClient) {
         // this.getAllPlants();
-
+        this.request = window.indexedDB.open("planttracker", 1);
         if(window.indexedDB){
             console.log('IndexedDB is supported');
         }
-
+        this.request.onerror = function(event) {
+            // Do something with request.errorCode!
+            console.log(event)
+          };
         this.request.onsuccess =  (event) => {
             this.db = this.request.result;
             console.log('The database is opened successfully');
@@ -38,6 +41,7 @@ export class PlantsService {
             //@ts-ignore
             const db = event.target.result; 
             const store = db.createObjectStore('plants', {keyPath: 'id'});
+            console.log("CREATED");
             
         };
     }

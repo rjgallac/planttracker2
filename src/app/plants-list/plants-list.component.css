@@ -1,0 +1,13 @@
+#plant-list{
+    list-style:none;
+    padding-left:0;
+}
+.plant-link{
+    border:1px solid grey;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.plant-link a{
+    text-decoration: none;
+}

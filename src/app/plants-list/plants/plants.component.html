@@ -1,14 +1,23 @@
-<div id="plant">
+
+<div class="top-margin bottom-margin" id="plant">
     <h2>{{plant.name}}</h2>
-    <ul *ngFor="let dates of plant.dates | keyvalue">
-        <li>
+    <ul id="plant-dates">
+        <li *ngFor="let dates of plant.dates | keyvalue">
             <h3>{{dates.key}}</h3>
             <app-dates [dates]="dates.value"></app-dates>
         </li>
     </ul>
-    <button (click)="deletePlant()">delete plant</button>
-    <a [routerLink]="['/plant/',plantId, 'addaction']">add action</a>
-    <a [routerLink]="['/plant/',plantId, 'addobservation']">add observation</a>
-    <a [routerLink]="['/plant/',plantId, 'addmeasurement']">add measurement</a>
-    <a [routerLink]="['/plant/',plantId, 'addpic']">add pic</a>
+    <button (click)="deletePlant()">D</button>
+
+    
+</div>
+<div style="width:100%;background-color:red;">
+<div id="footer" >
+    <div id="footer-links">
+        <a class="footer-link" [routerLink]="['/plant/',plantId, 'addaction']">A</a>
+        <a class="footer-link" [routerLink]="['/plant/',plantId, 'addobservation']">O</a>
+        <a class="footer-link" [routerLink]="['/plant/',plantId, 'addmeasurement']">M</a>
+        <a class="footer-link" [routerLink]="['/plant/',plantId, 'addpic']">P</a>
+    </div>
+</div>
 </div>

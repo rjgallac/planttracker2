@@ -1,10 +1,11 @@
-<div style="width:1000px;margin: 0 auto;">
-    <div style="background-color: grey;">
-        <ul style="list-style:none;">
+<div>
+    <div id="header">
+        <h1>Plant Tracker</h1>
+        <ul id="menu">
             <li class="link" ><a [routerLink]="['/']">Home</a> </li>
             <li class="link" ><a [routerLink]="['/list']">list</a> </li>
             <li class="link" ><a [routerLink]="['/addplant']">add plant</a></li>
         </ul>
-        <router-outlet></router-outlet>
     </div>
+    <router-outlet></router-outlet>
 </div>

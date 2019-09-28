@@ -1,3 +1,5 @@
-<ul *ngFor="let plant of getPlants()| async; let i = index;">
-    <li><a [routerLink]="['/plant',i]">{{plant.name}}</a></li>
-</ul>
+<div class="top-margin" id="plant-list-component">
+    <ul id="plant-list" >
+        <li *ngFor="let plant of getPlants()| async; let i = index;" class="plant-link"><a [routerLink]="['/plant',i]">{{plant.name}}</a></li>
+    </ul>
+</div>
