@@ -117,6 +117,22 @@ export class PlantsService {
         }
         this.updatePlantInDB(items[id]);
     }
+    addPic(id, date, pic){
+        const plants = this.plants$.getValue()
+        const itemdate = plants[id].dates[date];
+        if (itemdate) {
+            itemdate.actions.push(pic);
+            this.plants$.next(plants);
+            console.log(date)
+        }else{
+            const pics = [];
+            pics.push(pic)
+            plants[id].dates[date] = { pics: pics }
+            console.log(pic);
+        }
+        this.updatePlantInDB(plants[id]);
+
+    }
     updatePlantInDB(plant){
         console.log(plant)
         var transaction = this.db.transaction('plants', 'readwrite');
