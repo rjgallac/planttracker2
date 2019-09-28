@@ -12,6 +12,12 @@ import { AddPlantComponent } from './add-plant/add-plant.component';
 import { AddActionComponent } from './plants-list/plants/dates/actions/add-action/add-action.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { ObservationsComponent } from './plants-list/plants/dates/observations/observations.component';
+import { MeasurementsComponent } from './plants-list/plants/dates/measurements/measurements.component';
+import { PicsComponent } from './plants-list/plants/dates/pics/pics.component';
+import { AddPicComponent } from './plants-list/plants/dates/pics/add-pic/add-pic.component';
+import { AddMeasurementComponent } from './plants-list/plants/dates/measurements/add-measurement/add-measurement.component';
+import { AddObservationComponent } from './plants-list/plants/dates/observations/add-observation/add-observation.component';
 
 
 @NgModule({
@@ -23,7 +29,13 @@ import { HomeComponent } from './home/home.component';
     PlantsListComponent,
     AddPlantComponent,
     AddActionComponent,
-    HomeComponent
+    HomeComponent,
+    ObservationsComponent,
+    MeasurementsComponent,
+    PicsComponent,
+    AddPicComponent,
+    AddMeasurementComponent,
+    AddObservationComponent
   ],
   imports: [
     BrowserModule,

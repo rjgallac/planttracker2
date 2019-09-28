@@ -1,9 +1,14 @@
-<h2>{{plant.name}}</h2>
-<ul *ngFor="let dates of plant.dates | keyvalue">
-    <li>
-        <h3>{{dates.key}}</h3>
-        <app-dates [dates]="dates.value"></app-dates>
-    </li>
-</ul>
-<button (click)="deletePlant()">delete plant</button>
-<a [routerLink]="['/plant/',plantId, 'addaction']">add action</a>
+<div id="plant">
+    <h2>{{plant.name}}</h2>
+    <ul *ngFor="let dates of plant.dates | keyvalue">
+        <li>
+            <h3>{{dates.key}}</h3>
+            <app-dates [dates]="dates.value"></app-dates>
+        </li>
+    </ul>
+    <button (click)="deletePlant()">delete plant</button>
+    <a [routerLink]="['/plant/',plantId, 'addaction']">add action</a>
+    <a [routerLink]="['/plant/',plantId, 'addobservation']">add observation</a>
+    <a [routerLink]="['/plant/',plantId, 'addmeasurement']">add measurement</a>
+    <a [routerLink]="['/plant/',plantId, 'addpic']">add pic</a>
+</div>

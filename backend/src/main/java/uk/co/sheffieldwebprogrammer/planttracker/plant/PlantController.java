@@ -28,7 +28,7 @@ public class PlantController {
     recordings.addMeasurement(new Measurement(MeasurementType.WATER, ""));
     recordings.addMeasurement(new Measurement(MeasurementType.HEIGHT, "100mm"));
     recordings.addAction(new Action(ActionType.WATER));
-    
+
     plant.addRecordings("2019-01-01", recordings);
     plant2.addRecordings("2019-01-01", recordings);
     plant2.addRecordings("2019-09-26", recordings);
