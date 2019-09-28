@@ -11,6 +11,7 @@ export class AddActionComponent implements OnInit {
   id;
   date;
   text;
+  type;
   constructor(private plantService: PlantsService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -20,7 +21,7 @@ export class AddActionComponent implements OnInit {
   public addItem() {
     const item = {
       "type": "ACTION",
-      "actionType":"WATER",
+      "actionType":this.type,
       "date": this.date
     }
     this.plantService.addAction(this.id, item)

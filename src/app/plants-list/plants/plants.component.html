@@ -3,10 +3,17 @@
     <h2>{{plant.name}}</h2>
     <div id="plant-content">
         <a class="plant" *ngFor="let action of plant.actions">
-                <app-actions *ngIf="action.type === 'ACTION'" [actions]="action"></app-actions>
-                <app-observations *ngIf="action.type === 'OBSERVATION'" [observation]="action"></app-observations>
-                <app-measurements *ngIf="action.type === 'MEASUREMENT'" [measurement]="action"></app-measurements>
-                <app-pics *ngIf="action.type === 'PIC'" [pic]="action"></app-pics>
+                <div id="card">
+                    <div class="plant-title">
+                        {{action.type}}
+                    </div>
+                    <div class="plant-content">
+                        <app-actions *ngIf="action.type === 'ACTION'" [actions]="action"></app-actions>
+                        <app-observations *ngIf="action.type === 'OBSERVATION'" [observation]="action"></app-observations>
+                        <app-measurements *ngIf="action.type === 'MEASUREMENT'" [measurement]="action"></app-measurements>
+                        <app-pics *ngIf="action.type === 'PIC'" [pic]="action"></app-pics>
+                    </div>
+                </div>
         </a>
 
     </div>
