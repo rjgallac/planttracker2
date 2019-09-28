@@ -6,72 +6,13 @@ import { HttpClient } from '@angular/common/http';
     providedIn: 'root'
 })
 export class PlantsService {
-    private plants = [{
-        "id": 0,
-        "name": "plant1",
-        "dates": {
-            "2019-01-01": {
-                "observations": [{
-                    "text": "asdf"
-                }],
-                "measurements": [{
-                    "measurementType": "WATER",
-                    "text": ""
-                }, {
-                    "measurementType": "HEIGHT",
-                    "text": "100mm"
-                }],
-                "actions": [{
-                    "actionType": "WATER"
-                }],
-                "pics": []
-            }
-        }
-    }, {
-        "id": 1,
-        "name": "plant2",
-        "dates": {
-            "2019-09-26": {
-                "observations": [{
-                    "text": "asdf"
-                }],
-                "measurements": [{
-                    "measurementType": "WATER",
-                    "text": ""
-                }, {
-                    "measurementType": "HEIGHT",
-                    "text": "100mm"
-                }],
-                "actions": [{
-                    "actionType": "WATER"
-                }],
-                "pics": []
-            },
-            "2019-01-01": {
-                "observations": [{
-                    "text": "asdf"
-                }],
-                "measurements": [{
-                    "measurementType": "WATER",
-                    "text": ""
-                }, {
-                    "measurementType": "HEIGHT",
-                    "text": "100mm"
-                }],
-                "actions": [{
-                    "actionType": "WATER"
-                }],
-                "pics": []
-            }
-        }
-    }];
     private plants$: BehaviorSubject<any[]> = new BehaviorSubject([]);
     private plant$: BehaviorSubject<any> = new BehaviorSubject({});
     private request = window.indexedDB.open("planttracker", 1);
     private db;
 
     constructor(private http: HttpClient) {
-        this.getAllPlants();
+        // this.getAllPlants();
 
         if(window.indexedDB){
             console.log('IndexedDB is supported');
@@ -80,28 +21,25 @@ export class PlantsService {
         this.request.onsuccess =  (event) => {
             this.db = this.request.result;
             console.log('The database is opened successfully');
-            this.request.onupgradeneeded = (event) => {
-                var objectStore = this.db.createObjectStore("plants", {keyPath: "id"});
-             }
-        
+            var transaction = this.db.transaction('plants', 'readwrite');
+            transaction.onsuccess = function(event) {
+                console.log('[Transaction] ALL DONE!');
+            };
+            var plants = transaction.objectStore('plants');
+            const plantsresult = plants.getAll()
+            plantsresult.onsuccess = () =>{
+                console.log(plantsresult.result)
+                this.plants$.next(plantsresult.result);
+            }
+
+
         };
         this.request.onupgradeneeded = function(event) {
             //@ts-ignore
             const db = event.target.result; 
             const store = db.createObjectStore('plants', {keyPath: 'id'});
+            
         };
-
-    }
-
-    save(){
-
-        var request = this.db.transaction(['plants'], 'readwrite')
-        .objectStore('plants')
-        .add(this.plants[0]);
-    
-      request.onsuccess = function (event) {
-        console.log('The data has been written successfully');
-      };
     }
 
     public getPlant(index) {
@@ -120,16 +58,33 @@ export class PlantsService {
     getPlantObservable(){
         return this.plant$.asObservable();
     }
-    getAllPlants() {
-        this.plants$.next(this.plants);
-    }
+
     addPlant(plantName) {
-        this.plants$.getValue().push({
+        const currentListOfPlants = this.plants$.getValue();
+        const newPlant = {
+            "id": this.uuidv4(),
             "name": plantName,
             "dates": []
         }
-        )
+        currentListOfPlants.push(newPlant)
+        this.save(newPlant)
     }
+
+    save(plant){
+        var request = this.db.transaction(['plants'], 'readwrite')
+        .objectStore('plants')
+        .add(plant);
+    
+      request.onsuccess = function (event) {
+        console.log('The data has been written successfully');
+      };
+    }
+    uuidv4() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+      }
     deletePlant(plantId) {
         const plants = this.plants$.getValue();
         plants.splice(plantId, 1);
