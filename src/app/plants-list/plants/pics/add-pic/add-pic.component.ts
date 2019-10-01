@@ -18,12 +18,12 @@ export class AddPicComponent implements OnInit {
 
   }
   onFileSelected(event){
-    console.log(event)
+    // console.log(event)
     this.selectedFile = event.target.files[0];
     var file= event.target.files[0];
     const reader = new FileReader();
     reader.addEventListener('load', (event: any) => {
-      console.log(reader.result);
+      // console.log(reader.result);
       const item = {
         "type": "PIC",
         "pic": reader.result,

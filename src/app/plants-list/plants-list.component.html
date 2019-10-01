@@ -1,5 +1,7 @@
 <div class="top-margin" id="plant-list-component">
     <div id="plant-list">
-        <a *ngFor="let plant of getPlants()| async; let i = index;" class="plant-link" [routerLink]="['/plant',i]">{{plant.name}}</a>
+        <div  class="plant-link">
+            <a *ngFor="let plant of getPlants()| async; let i = index;" [routerLink]="['/plant',i]">{{plant.name}}</a>
+        </div>
     </div>
 </div>

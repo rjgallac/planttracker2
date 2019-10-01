@@ -16,10 +16,12 @@ describe('ActionsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ActionsComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    
   });
 
   it('should create', () => {
+    component.actions = [];
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });

@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { PlantsComponent } from './plants.component';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {RouterTestingModule} from "@angular/router/testing";
 
 describe('PlantsComponent', () => {
   let component: PlantsComponent;
@@ -8,7 +10,12 @@ describe('PlantsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlantsComponent ]
+      declarations: [ PlantsComponent ],
+      imports: [HttpClientTestingModule,
+        RouterTestingModule.withRoutes(
+          []
+        )],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));

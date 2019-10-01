@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { AddPicComponent } from './add-pic.component';
+import {RouterTestingModule} from "@angular/router/testing";
 
 describe('AddPicComponent', () => {
   let component: AddPicComponent;
@@ -8,7 +9,11 @@ describe('AddPicComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddPicComponent ]
+      declarations: [ AddPicComponent ],
+      imports: [HttpClientTestingModule,
+          RouterTestingModule.withRoutes(
+        []
+      )],
     })
     .compileComponents();
   }));

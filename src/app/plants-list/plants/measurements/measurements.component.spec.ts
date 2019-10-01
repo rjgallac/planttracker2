@@ -16,10 +16,12 @@ describe('MeasurementsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MeasurementsComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    // fixture.detectChanges();
   });
 
   it('should create', () => {
+    component.measurement = {"date":"tst", "type":"sdfg", "text":"sdfsdf"};
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });

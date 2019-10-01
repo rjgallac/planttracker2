@@ -15,23 +15,23 @@ export class PlantsService {
         // this.getAllPlants();
         this.request = window.indexedDB.open("planttracker", 1);
         if(window.indexedDB){
-            console.log('IndexedDB is supported');
+            // console.log('IndexedDB is supported');
         }
         this.request.onerror = function(event) {
             // Do something with request.errorCode!
-            console.log(event)
+            // console.log(event)
           };
         this.request.onsuccess =  (event) => {
             this.db = this.request.result;
-            console.log('The database is opened successfully');
+            // console.log('The database is opened successfully');
             var transaction = this.db.transaction('plants', 'readwrite');
             transaction.onsuccess = function(event) {
-                console.log('[Transaction] ALL DONE!');
+                // console.log('[Transaction] ALL DONE!');
             };
             var plants = transaction.objectStore('plants');
             const plantsresult = plants.getAll()
             plantsresult.onsuccess = () =>{
-                console.log(plantsresult.result)
+                // console.log(plantsresult.result)
                 this.plants$.next(plantsresult.result);
             }
 
@@ -41,14 +41,14 @@ export class PlantsService {
             //@ts-ignore
             const db = event.target.result; 
             const store = db.createObjectStore('plants', {keyPath: 'id'});
-            console.log("CREATED");
+            // console.log("CREATED");
             
         };
     }
 
     public getPlant(index) {
         this.plants$.subscribe(data =>{
-            console.log(data)
+            // console.log(data)
             const value = data[index]
             if(value){
                 this.plant$.next(value);
@@ -80,7 +80,7 @@ export class PlantsService {
         .add(plant);
     
       request.onsuccess = function (event) {
-        console.log('The data has been written successfully');
+        // console.log('The data has been written successfully');
       };
     }
     uuidv4() {
@@ -95,7 +95,7 @@ export class PlantsService {
         var request = plantsStore.delete(plantId);
         const plants = this.plants$.getValue();
         plants.splice(plantIndex, 1);
-        console.log(plantIndex)
+        // console.log(plantIndex)
         this.plants$.next(plants);
     }
     addAction(id, item) {
@@ -123,7 +123,7 @@ export class PlantsService {
         this.updatePlantInDB(items[id]);
     }
     updatePlantInDB(plant){
-        console.log(plant)
+        // console.log(plant)
         var transaction = this.db.transaction('plants', 'readwrite');
         var plantsStore: IDBObjectStore = transaction.objectStore('plants');
         var request = plantsStore.put(plant);

@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ObservationsComponent } from './observations.component';
+import { FormsModule }   from '@angular/forms';
 
 describe('ObservationsComponent', () => {
   let component: ObservationsComponent;
@@ -8,7 +9,8 @@ describe('ObservationsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ObservationsComponent ]
+      declarations: [ ObservationsComponent ],
+      imports: [FormsModule]
     })
     .compileComponents();
   }));
@@ -16,7 +18,7 @@ describe('ObservationsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ObservationsComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    // fixture.detectChanges();
   });
 
   it('should create', () => {

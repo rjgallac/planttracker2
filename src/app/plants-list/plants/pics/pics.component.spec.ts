@@ -16,10 +16,12 @@ describe('PicsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PicsComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    // fixture.detectChanges();
   });
 
   it('should create', () => {
+    component.pic = {pic:"asdf"};
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });

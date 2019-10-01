@@ -22,7 +22,7 @@ export class PlantsComponent implements OnInit {
     this.plantId = this.route.snapshot.params["id"];
     this.plantsService.getPlant(this.plantId);
     this.plantsService.getPlantObservable().pipe(filter(x=> x!={})).subscribe(data =>{
-      console.log(data)
+      // console.log(data)
       this.plant = data;
     })
   }
